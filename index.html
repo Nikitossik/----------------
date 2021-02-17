@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Иерархия классов</title>
+</head>
+
+<body>
+    <script>
+        class Animal {
+            constructor(name = 'defaultName', age = 1) {
+                this._name = name;
+                this._age = age;
+            }
+
+            get name() {
+                return this._name;
+            }
+
+            set name(value) {
+                this._name = value;
+            }
+
+            get age() {
+                return this._age;
+            }
+
+            set age(years) {
+                this._age = years;
+            }
+
+            walk() {
+                alert(`${this._name} is ${this._age} years old `);
+            }
+        }
+        class Dog extends Animal {
+            constructor() {
+                super();
+            }
+
+            walk() {
+                super.walk()
+                alert(`${this.name} runs!`);
+            }
+        }
+
+        class Cat extends Animal {
+            constructor() {
+                super();
+            }
+
+            walk() {
+                super.walk()
+                alert(`${this.name} just sits and sleeps!`);
+            }
+        }
+
+        let a = new Animal('Some animal', 5);
+        a.walk();
+        a.age = 6;
+        a.name = 'Still some animal';
+        a.walk();
+
+        let cat = new Cat(), dog = new Dog();
+
+        cat.walk();
+        cat.name = 'Max';
+        cat.age = 2;
+        cat.walk();
+
+        dog.walk();
+        dog.name = 'Fido';
+        dog.age = 3;
+        dog.walk();
+    </script>
+</body>
+
+</html>
